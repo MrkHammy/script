@@ -26,6 +26,37 @@
 >
 > Fox Lab is a full-stack PHP web application with a MySQL database consisting of **23 normalized tables**. It features a phishing email simulator, a password security tester, an online code compiler with Python and Java support, an 85-term cybersecurity glossary, a blog system with admin management, and a security tips page. All pages use PDO prepared statements for SQL injection prevention and the `e()` helper function for XSS protection.
 >
+> Before we dive into the technical details, let me give you a quick tour of the platform so you can see what Fox Lab actually looks and feels like."
+
+---
+
+## 🌐 SLIDE 1.5: Live Platform Walkthrough (Marcelino, Princess Camille)
+
+**Script:**
+
+> *(Opens the deployed Fox Lab website in the browser.)*
+>
+> "Alright — welcome to **Fox Lab**. This is our live deployed website hosted on **ProFreeHost**. Let's walk through it.
+>
+> **Starting with the Home Page** — this is the first thing users see. Right at the top we have our hero section — *'Master Cybersecurity, One Skill at a Time.'* Below that, you'll see live platform statistics pulled straight from the database — total users, total glossary terms, and total phishing scenarios. These aren't hardcoded — they update automatically as the database grows. Scroll down a bit and you'll see our **platform features overview** — each card represents a core tool. And at the bottom, our **partner organizations** — CSIA, CISCO, and GDG — rendered dynamically from the `partners` table.
+>
+> **Let's jump to the Blogs page.** Here you can see our featured blog displayed prominently at the top, and below it, all published articles with category filter buttons — Education, Cybersecurity, Technology, and more. These filter buttons are generated dynamically from the `categories` table. Click on any blog and you'll see the full article with **auto-linked glossary terms** — hover over the highlighted words and they link directly to our glossary. That's Daryl's feature and it works beautifully.
+>
+> **Now let's check out the Cybersecurity Glossary.** This is a searchable, filterable dictionary of **85 cybersecurity terms**. You can filter by category — Protocols, Threats, Concepts, Encryption, Compliance, Tools — or browse alphabetically with the A–Z navigation. Watch this — as I type in the search box, **predictive suggestions** appear instantly. Click on any term and you get the full definition, pronunciation, usage context, related terms, threats, and resources. Logged-in users can also **bookmark** their favorite terms with one click.
+>
+> **Next up — Security Tips.** Five detailed cybersecurity best practices, each with expandable step-by-step guidance. Think of this as Fox Lab's quick-reference survival guide for staying safe online.
+>
+> **Now here's where it gets fun — the Phishing Simulator.** This is an interactive email inbox that presents realistic phishing and legitimate email scenarios. Users have to decide: *Is this phishing or is it legitimate?* You get a checklist of indicators to analyze before making your call. After answering, the system reveals red flags and tells you exactly what you missed. It's like a cybersecurity escape room — but with emails. Each session gives you **4 random scenarios** out of 15 in the database, so it's different every time.
+>
+> **Let's move to the Password Security Tester.** Type any password and watch the **real-time analysis** — five criteria light up as you type: length, uppercase, lowercase, numbers, and symbols. The strength bar fills up and changes color. And here's the best part — it checks your password against **100 known compromised passwords** loaded from our database. All of this runs entirely in the browser — the actual password **never touches our server**. Only metadata is logged for analytics.
+>
+> **And finally — the crown jewel — Fox Code, our Online Compiler.** This supports **Python and Java** with real code execution. You can write code in the editor, hit Run, and see the output instantly — powered by the Piston sandboxed execution engine with a local fallback. On the left sidebar, you'll see your saved projects and global demo projects. Switch languages and the **Quick Reference panel** updates with language-specific commands. And over here — **interactive tutorials** — 8 lessons for Python, 8 for Java, loaded from our database. Click any tutorial and the code loads right into the editor ready to run.
+>
+> **One more thing — the Admin Dashboard.** *(Logs in as admin.)* This is the backend control center. Platform overview stats, user activity breakdown with quiz counts and password checks per user, password strength distribution charts, and the **Blog Management System** where admins can create, edit, and delete posts with thumbnail uploads, HTML content editing, and a live preview toggle.
+>
+> So that's Fox Lab — **six major features**, all database-driven, all secured with PDO prepared statements and XSS prevention, all deployed and running live. Now let me walk you through the technical details of what I personally built."
+
+---
 > Let me now walk through my own contribution."
 
 ---
