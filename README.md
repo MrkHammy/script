@@ -293,7 +293,21 @@ LEFT JOIN (SELECT user_id, COUNT(*) AS quiz_count ... FROM quiz_results GROUP BY
 
 ### ✅ Live Modification Task – Bautista
 
-> "For my live modification, I will **change the blog listing sort order from newest-first to oldest-first** on the admin blog table."
+> "Now, before I make a code-level modification, let me first demonstrate the admin blog management UI in action.
+>
+> Imagine a scenario: what if a featured partner organizationm for this demonstration the CSIA wants you to feature their Facebook post within the blogs page? With our admin blog system, this is very straightforward — you can either **create a new blog** or **edit an existing one**. For this demonstration, I will be **editing this existing featured blog** to also show the edit function working.
+>
+> *(Opens admin-blogs.php in the browser, clicks the Edit button on the featured blog, updates the content field to include an embedded Facebook post link or reference, and clicks Save.)*
+>
+> As you can see, the edit form pre-populates all 18 fields from the database using:
+
+```php
+$stmt = $pdo->prepare("SELECT * FROM blogs WHERE id = :id LIMIT 1");
+```
+
+> When I hit Save, the UPDATE query fires with all the fields including the new content, and `updated_at` refreshes automatically via `ON UPDATE CURRENT_TIMESTAMP` in the schema. The thumbnail upload, MIME validation with `finfo_open()`, and filename randomization with `bin2hex(random_bytes(4))` all work the same whether creating or editing. That's the UI side working as intended.
+>
+> Now for my **code-level modification**. I will **change the blog listing sort order from newest-first to oldest-first** on the admin blog table."
 
 **Task:** In `admin-blogs.php`, find the blog list query and change `DESC` to `ASC`.
 
@@ -308,7 +322,6 @@ $allBlogs = $pdo->query("SELECT id, title, category, author, image_url, is_featu
 ```
 
 > "This changes the admin table to show the oldest posts first instead of the newest. This could be useful for reviewing posts in chronological order. To revert, we simply change `ASC` back to `DESC`."
-
 ---
 
 ## 🎨 SLIDE 5: Bermas – UI/UX Design, Theme Engine & Password Tester (Estella Mae)
