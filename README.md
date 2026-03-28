@@ -426,19 +426,6 @@ $stmt = $pdo->prepare("INSERT INTO pw_logs (user_id, strength_level, char_count,
 
 > "The `pw_logs` table has `user_id` as an FK to `users` with `ON DELETE SET NULL`, so logs are preserved even if the user account is deleted. This data is later consumed by the Admin Dashboard for the password strength distribution chart using `GROUP BY strength_level`.
 >
-> I also built the **dynamic UI elements** rendered server-side. The partners banner on the home page queries:
-
-```php
-$stmtPartners = $pdo->query("SELECT name, logo_url FROM partners ORDER BY display_order ASC");
-```
-
-> "The blog category filter buttons are generated from:
-
-```sql
-SELECT name FROM categories ORDER BY display_order ASC
-```
-
-> "All dynamic PHP output across every page passes through the `e()` helper — `htmlspecialchars($val, ENT_QUOTES, 'UTF-8')` — preventing XSS."
 
 ### ✅ Live Modification Task – Bermas
 
